@@ -15,5 +15,35 @@ item.getName() == null || item.getName().length() == 0 опфаќа линија
 item.getName() == null || item.getName().length() != 0 опфаќа линија 62
 item.getName() != null || item.getName().length() == 0 опфаќа линија 62
 item.getName() != null || item.getName().length() != 0 опфаќа линија 62
-item.getPrice() > 300 || item.getDiscount() > 0 || item.getQuantity() > 10 опфаќа линија 67
-  Во овој дел бидејќи имаме три различни случаеви, ова е комбинација од 3 = 7 тест случаеви
+throw new RuntimeException("Invalid item!");  опфаќа линија 63
+item.getPrice() > 300 || item.getDiscount() > 0 || item.getQuantity() > 10 опфаќа линија 66
+  Во овој дел бидејќи имаме три различни случаеви, ова е комбинација од 3 = 8 тест случаеви
+item.getDiscount() > 0 опфаќа линија 70
+item.getDiscount() <= 0 опфаќа линија 70
+cardNumber != null && cardNumber.length() == 16 опфаќа линија 77
+cardNumber != null && cardNumber.length() != 16 опфаќа линија 77
+cardNumber == null && cardNumber.length() == 16 опфаќа линија 77
+cardNumber == null && cardNumber.length() != 16 опфаќа линија 77
+j < cardNumber.length() опфаќа линија 80
+j >= cardNumber.length() опфаќа линија 80
+allowed.indexOf(c) == -1 опфаќа линија 82
+allowed.indexOf(c) != -1 опфаќа линија 82
+throw new RuntimeException("Invalid character in card number!"); опфаќа линија 83 
+throw new RuntimeException("Invalid card number!"); опфаќа линија 87
+return sum; опфаќа линија 90
+
+Овие се функционалните делови кои го опфаќаат критериумот по every statement.
+За истиот критериум да се постигне со минимум случаеви, доволни се сите услови да се опфатат (statements), во нашиот пример како if.. for.. итн. Нивниот број со секој опфатен услов
+
+Multiple Condition критериумот за условот if (item.getPrice() > 300 || item.getDiscount() > 0 || item.getQuantity() > 10), мора да ги опфати сите комбинации како минимален бтој за да се исполни условот. 
+Бидејќи се работи за "или" во условот, трите комбинации мора да бидат посебно. Значи во овој случај имаме комбинација од 3 случаеви, 2*2*2 = 8 комбинации.
+Ќе пробам да ѓи напишам:
+if (item.getPrice() > 300 || item.getDiscount() > 0 || item.getQuantity() > 10)
+if (item.getPrice() > 300 || item.getDiscount() > 0 || item.getQuantity() <= 10)
+if (item.getPrice() > 300 || item.getDiscount() <= 0 || item.getQuantity() > 10)
+if (item.getPrice() <= 300 || item.getDiscount() > 0 || item.getQuantity() > 10)
+if (item.getPrice() > 300 || item.getDiscount() <= 0 || item.getQuantity() <= 10)
+if (item.getPrice() <= 300 || item.getDiscount() <= 0 || item.getQuantity() > 10)
+if (item.getPrice() <= 300 || item.getDiscount() > 0 || item.getQuantity() <= 10)
+if (item.getPrice() <= 300 || item.getDiscount() <= 0 || item.getQuantity() <= 10)
+Ова се сите, а воедно и минимален број на тест случаеви за да се постигне критериумот.
